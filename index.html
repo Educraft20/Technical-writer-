@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض أعمالي المهنية - الترجمة والكتابة</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            color: white;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1em;
+            opacity: 0.8;
+        }
+
+        .content {
+            padding: 50px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: #3498db;
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .document-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            padding: 25px;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .document-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #3498db, #2ecc71);
+        }
+
+        .document-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .document-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .document-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #3498db, #2ecc71);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-left: 15px;
+        }
+
+        .document-meta {
+            flex: 1;
+        }
+
+        .document-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+
+        .document-category {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            background: #ecf0f1;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .document-description {
+            color: #5a6c7d;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+
+        .document-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .info-item {
+            text-align: center;
+        }
+
+        .info-label {
+            font-size: 0.8em;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .document-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .view-btn {
+            background: linear-gradient(45deg, #27ae60, #2ecc71);
+            color: white;
+        }
+
+        .view-btn:hover {
+            background: linear-gradient(45deg, #219a52, #27ae60);
+            transform: translateY(-2px);
+        }
+
+        .download-btn {
+            background: linear-gradient(45deg, #2980b9, #3498db);
+            color: white;
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(45deg, #21618c, #2980b9);
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2em;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .documents-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>معرض أعمالي المهنية</h1>
+            <p>متخصص في الترجمة والكتابة والتحرير</p>
+            <p>مجموعة من أفضل الأعمال والمشاريع المنجزة</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">14</span>
+                    <span class="stat-label">مشروع منجز</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5+</span>
+                    <span class="stat-label">سنوات خبرة</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">رضا العملاء</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <h2 class="section-title">نماذج من أعمالي</h2>
+            
+            <div class="documents-grid">
+                <!-- ترجمة أو هنري -->
+                <div class="document-card">
+                    <div class="document-header">
+                        <div class="document-icon">📚</div>
+                        <div class="document-meta">
+                            <div class="document-title">ترجمة قصص أو هنري</div>
+                            <div class="document-category">ترجمة أدبية</div>
+                        </div>
+                    </div>
+                    <div class="document-description">
+                        ترجمة احترافية لمجموعة من قصص الكاتب الأمريكي الشهير أو هنري، مع الحفاظ على الأسلوب الأدبي والمعنى الأصلي.
+                    </div>
+                    <div class="document-info">
+                        <div class="info-item">
+                            <div class="info-label">النوع</div>
+                            <div class="info-value">Word</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">التخصص</div>
+                            <div class="info-value">ترجمة أدبية</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">اللغة</div>
+                            <div class="info-value">EN → AR</div>
+                        </div>
+                    </div>
+                    <div class="document-actions">
+                        <a href="documents/اوهنريمترجم.doc" class="action-btn view-btn" target="_blank">عرض</a>
+                        <a href="documents/اوهنريمترجم.doc" class="action-btn download-btn" download>تحميل</a>
+                    </div>
+                </div>
+
+                <!-- مذكرات حواء -->
+                <div class="document-card">
+                    <div class="document-header">
+                        <div class="document-icon">✍️</div>
+                        <div class="document-meta">
+                            <div class="document-title">مذكرات حواء</div>
+                            <div class="document-category">كتابة إبداعية</div>
+                        </div>
+                    </div>
+                    <div class="document-description">
+                        عمل إبداعي يتناول قصة حواء من منظور معاصر، مكتوب بأسلوب أدبي راقي ولغة عربية فصيحة.
+                    </div>
+                    <div class="document-info">
+                        <div class="info-item">
+                            <div class="info-label">النوع</div>
+                            <div class="info-value">Word</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">التخصص</div>
+                            <div class="info-value">كتابة إبداعية</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">اللغة</div>
+                            <div class="info-value">العربية</div>
+                        </div>
+                    </div>
+                    <div class="document-actions">
+                        <a href="documents/مذكراتحواء.docx" class="action-btn view-btn" target="_blank">عرض</a>
+                        <a href="documents/مذكراتحواء.docx" class="action-btn download-btn" download>تحميل</a>
+                    </div>
+                </div>
+
+                <!-- مشروع القوى العاملة -->
+                <div class="document-card">
+                    <div class="document-header">
+                        <div class="document-icon">💼</div>
+                        <div class="document-meta">
+                            <div class="document-title">مشروع القوى العاملة</div>
+                            <div class="document-category">ترجمة تجارية</div>
+                        </div>
+                    </div>
+                    <div class="document-description">
+                        ترجمة مشروع متخصص في مجال الموارد البشرية والقوى العاملة، يتضمن مصطلحات تقنية ومهنية دقيقة.
+                    </div>
+                    <div class="document-info">
+                        <div class="info-item">
+                            <div class="info-label">النوع</div>
+                            <div class="info-value">Word</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">التخصص</div>
+                            <div class="info-value">ترجمة تجارية</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">اللغة</div>
+                            <div class="info-value">EN → AR</div>
+                        </div>
+                    </div>
+                    <div class="document-actions">
+                        <a href="documents/Manpower_project.docx" class="action-btn view-btn" target="_blank">عرض</a>
+                        <a href="documents/Manpower_project.docx" class="action-btn download-btn" download>تحميل</a>
+                    </div>
+                </div>
+
+                <!-- ترجمة آن سولارد -->
+                <div class="document-card">
+                    <div class="document-header">
+                        <div class="document-icon">🌟</div>
+                        <div class="document-meta">
+                            <div class="document-title">ترجمة آن سولارد</div>
+                            <div class="document-category">ترجمة شخصية</div>
+                        </div>
+                    </div>
+                    <div class="document-description">
+                        ترجمة متخصصة لمحتوى شخصي أو سيرة ذاتية، تتطلب دقة في نقل التفاصيل الشخصية والمهنية.
+                    </div>
+                    <div class="document-info">
+                        <div class="info-item">
+                            <div class="info-label">النوع</div>
+                            <div class="info-value">Word</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">التخصص</div>
+                            <div class="info-value">ترجمة شخصية</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">اللغة</div>
+                            <div class="info-value">EN → AR</div>
+                        </div>
+                    </div>
+                    <div class="document-actions">
+                        <a href="documents/AnneSoulard.1.docx" class="action-btn view-btn" target="_blank">عرض</a>
+                        <a href="documents/AnneSoulard.1.docx" class="action-btn download-btn" download>تحميل</a>
+                    </div>
+                </div>
+
+                <!-- ترجمة Give and Take -->
+                <div class="document-card">
+                    <div class="document-header">
+                        <div class="document-icon">🤝</div>
+                        <div class="document-meta">
+                            <div class="document-title">ترجمة كتاب Give and Take</div>
+                            <div class="document-category">ترجمة كتب</div>
+                        </div>
+                    </div>
+                    <div class="document-description">
+                        ترجمة احترافية لكتاب "Give and Take" إلى العربية، مع الحفاظ على المفاهيم النفسية والاجتماعية المعقدة.
+                    </div>
+                    <div class="document-info">
+                        <div class="info-item">
+                            <div class="info-label">النوع</div>
+                            <div class="info-value">Word</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">التخصص</div>
+                            <div class="info-value">ترجمة كتب</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">اللغة</div>
+                            <div class="info-value">EN → AR</div>
+                        </div>
+                    </div>
+                    <div class="document-actions">
+                        <a href="documents/ترجمةللعربيةGiveandTake.docx" class="action-btn view-btn" target="_blank">عرض</a>
+                        <a href="documents/ترجمةللعربيةGiveandTake.docx" class="action-btn download-btn" download>تحميل</a>
+                    </div>
+                </div>
+
+                <!-- تقرير التنمية المحلية -->
+                <div class="document-card">
+                    <div class="document-header">
+                        <div class="document-icon">📊</div>
+                        <div class="document-meta">
+                            <div class="document-title">تقرير التنمية المحلية وتحدياتها</div>
+                            <div class="document-category">كتابة أكاديمية</div>
+                        </div>
+                    </div>
+                    <div class="document-description">
+                        تقرير شامل حول التنمية المحلية والتحديات التي تواجهها، مكتوب بأسلوب أكاديمي ومدعم بالبحوث والإحصائيات.
+                    </div>
+                    <div class="document-info">
+                        <div class="info-item">
+                            <div class="info-label">النوع</div>
+                            <div class="info-value">Word</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">التخصص</div>
+                            <div class="info-value">كتابة أكاديمية</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">اللغة</div>
+                            <div class="info-value">العربية</div>
+                        </div>
+                    </div>
+                    <div class="document-actions">
+                        <a href="documents/تقريرعنالتنميةالمحليةوتحدياتها.docx" class="action-btn view-btn" target="_blank">عرض</a>
+                        <a href="documents/تقريرعنالتنميةالمحليةوتحدياتها.docx" class="action-btn download-btn" download>تحميل</a>
+                    </div>
+                </div>
+
+                <!-- ملف الترجمة العام -->
+                <div class="document-card">
+                    <div class="document-header">
+                        <div class="document-icon">🔄</div>
+                        <div class="document-meta">
+                            <div class="document-title">ملف الترجمة المتنوع</div>
+                            <div class="document-category">ترجمة عامة</div>
+                        </div>
+                    </div>
+                    <div class="document-description">
+                        مجموعة متنوعة من النصوص المترجمة في مجالات مختلفة، تظهر المرونة والقدرة على التعامل مع أنواع مختلفة من المحتوى.
+                    </div>
+                    <div class="document-info">
+                        <div class="info-item">
+                            <div class="info-label">النوع</div>
+                            <div class="info-value">Word</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">التخصص</div>
+                            <div class="info-value">ترجمة عامة</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">اللغة</div>
+                            <div class="info-value">متعدد</div>
+                        </div>
+                    </div>
+                    <div class="document-actions">
+                        <a href="documents/ملفالترجمة.docx" class="action-btn view-btn" target="_blank">عرض</a>
+                        <a href="documents/ملفالترجمة.docx" class="action-btn download-btn" download>تحميل</a>
+                    </div>
+                </div>
+
+                <!-- تحويل PDF إلى Word -->
+                <div class="document-card">
+                    <div class="document-header">
+                        <div class="document-icon">🔧</div>
+                        <div class="document-meta">
+                            <div class="document-title">تحويل PDF إلى Word</div>
+                            <div class="document-category">خدمات تقنية</div>
+                        </div>
+                    </div>
+                    <div class="document-description">
+                        نموذج لخدمة تحويل الملفات من PDF إلى Word مع الحفاظ على التنسيق والتخطيط الأصلي للمستند.
+                    </div>
+                    <div class="document-info">
+                        <div class="info-item">
+                            <div class="info-label">النوع</div>
+                            <div class="info-value">Word</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">التخصص</div>
+                            <div class="info-value">تحويل ملفات</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">الخدمة</div>
+                            <div class="info-value">PDF → Word</div>
+                        </div>
+                    </div>
+                    <div class="document-actions">
+                        <a href="documents/نسخمنpdfاليword.docx" class="action-btn view-btn" target="_blank">عرض</a>
+                        <a href="documents/نسخمنpdfاليword.docx" class="action-btn download-btn" download>تحميل</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>معرض أعمالي المهنية</strong></p>
+            <p class="contact-info">متخصص في الترجمة والكتابة والتحرير | جودة عالية وتسليم في الوقت المحدد</p>
+            <p class="contact-info">© 2025 جميع الحقوق محفوظة</p>
+        </div>
+    </div>
+</body>
+</html>
+
