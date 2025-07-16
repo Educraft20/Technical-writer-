@@ -1,2 +1,10 @@
-# Technical-writer-
-Various translations, including literary, cultural, and historical works, with rewording, copying, and formatting. 
+# معرض أعمالي المهنية
+
+## وصف المشروع
+معرض أعمال احترافي يعرض مستنداتك وأعمالك في مجال الترجمة والكتابة بطريقة منظمة وجذابة.
+
+## محتويات المجلد
+- `index.html` - الصفحة الرئيسية للمعرض
+- `documents/` - مجلد يحتوي على جميع ملفاتك (14 ملف)
+- `README.md` - هذا الملف (تعليمات الاستخدام)
+
